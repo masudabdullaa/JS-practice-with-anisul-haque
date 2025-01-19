@@ -1,0 +1,100 @@
+let totalAttemps = 5;
+let attemps = 0;
+let totalWon = 0;
+let totalLost = 0;
+
+const cardBody = document.querySelector(".card-body");
+const form = document.querySelector("form");
+const guessingNumber = form.querySelector("#guessingNumber");
+const checkButton = form.querySelector("#check");
+const losWonMessage = document.createElement("p");
+const resultText = cardBody.querySelector(".result-text");
+const remainingAttempts = cardBody.querySelector(".remaining-attempts");
+
+form.addEventListener("submit", function(event){
+    event.preventDefault();
+    attemps++;
+    if(attemps > 5){
+        guessingNumber.disabled = true;
+        checkButton.disabled = true;
+    }else{
+        checkResult(guessingNumber.value);
+        remainingAttempts.innerHTML = `Remaining attempts : ${totalAttemps - attemps}`
+    }
+})
+
+function checkResult(guessingNumber){
+    const randomNumber = getRandomNumber(5);
+    if(guessingNumber == randomNumber){
+        resultText.innerHTML = `You have won!`;
+        totalWon++;
+    }else{
+        resultText.innerHTML = `You have lost, correct random number was : ${randomNumber}`;
+        totalLost++;
+    }
+losWonMessage.innerHTML = `Total Won : ${totalWon}, Total Lost : ${totalLost}`;
+losWonMessage.classList.add("large-text");
+cardBody.appendChild(losWonMessage);
+}
+
+
+
+function getRandomNumber(limit){
+    return Math.floor(Math.random() * 5) + 1;
+}
+
+
+
+
+
+
+
+
+
+
+
+// let totalAttemps = 5;
+// let attemps = 0;
+// let totalWon = 0;
+// let totalLost = 0;
+
+// const form = document.querySelector("form");
+// const cardBody = document.querySelector(".card-body");
+// const guessingNumber = form.querySelector("#guessingNumber");
+// const checkButton = form.querySelector("#check");
+// const largeText = document.createElement("p");
+// const resultText = cardBody.querySelector(".resultText");
+// const remainingAttempts = cardBody.querySelector(".remainingAttempts");
+
+// form.addEventListener("submit", function(event){
+//     event.preventDefault();
+// attemps++;
+// if(attemps > 5){
+//     guessingNumber.disabled = true;
+//     checkButton.disabled = true;
+// }else{
+//     checkResult(guessingNumber.value);
+//     remainingAttempts.innerHTML = `Remaining attempts : ${totalAttemps - attemps}`;
+// }
+// })
+
+// function checkResult(guessingNumber){
+//     const randomNumber = getRandomNumber(5);
+// if(guessingNumber == randomNumber){
+//     resultText.innerHTML = `You have won!`;
+//     totalWon++;
+// }else{
+//     resultText.innerHTML = `You have lost! Correct random number was : ${randomNumber}`;
+//     totalLost++;
+// }
+// largeText.innerHTML = `Total Won : ${totalWon}, Total Lost : ${totalLost}`;
+// largeText.classList.add("large-text");
+// cardBody.appendChild(largeText);
+// }
+
+
+
+// function getRandomNumber(limit){
+//     return Math.floor(Math.random() * limit) + 1;
+// }
+
