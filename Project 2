@@ -1,0 +1,56 @@
+const x = [
+    {
+        title : "Title 1",
+        body : "Body text 1"
+    },
+    {
+        title : "Title 2",
+        body : "Body text 2"
+    },
+    {
+        title : "Title 3",
+        body : "Body text 3"
+    },
+    {
+        title : "Title 4",
+        body : "Body text 4"
+    },
+    {
+        title : "Title 5",
+        body : "Body text 5"
+    },
+    {
+        title : "Title 6",
+        body : "Body text 6"
+    },
+    {
+        title : "Title 7",
+        body : "Body text 7"
+    },
+    {
+        title : "Title 8",
+        body : "Body text 8"
+    },
+]
+
+const faceData = async (config) => {
+    const res = await axios(config);
+    return res.data;
+}
+
+const postsElement = document.querySelector(".posts");
+
+const loadAllData = async () => {
+    const x = await faceData("https://jsonplaceholder.typicode.com/posts");
+x.map((post)=>{
+    const postElement = document.createElement("div");
+    postElement.classList.add("post");
+    postElement.innerHTML = `
+    <h3>${post.title}</h3>
+    <p>${post.body}</p>
+    `;
+postsElement.appendChild(postElement);
+});
+};
+loadAllData();
+
