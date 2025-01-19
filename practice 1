@@ -1,0 +1,1370 @@
+
+const slideshowElements = document.querySelectorAll(".slideshow-content");
+
+let countElements = 1;
+setInterval(() => {
+    countElements++;
+    let currentElement = document.querySelector(".current");
+    currentElement.classList.remove("current");
+    
+    if(countElements > slideshowElements.length){
+        slideshowElements[0].classList.add("current");
+        countElements = 1;
+    }else{currentElement.nextElementSibling.classList.add("current");}
+    
+}, 2000);
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/*
+<i class="fa-regular fa-futbol"></i>
+<i class="fa-thin fa-volleyball"></i>
+<i class="fa-solid fa-person-swimming"></i>
+*/
+
+
+
+
+
+
+// const slideshowElements = document.querySelectorAll(".slideshow-element");
+// let countElements = 1;
+// setInterval(() => {
+//     countElements++;
+//     let currentElement = document.querySelector(".current");
+//     currentElement.classList.remove("current");
+//     if(countElements > slideshowElements.length) {
+//         slideshowElements[0].classList.add("current");
+//         countElements = 1;
+//     }else{
+//         currentElement.nextElementSibling.classList.add("current");
+//     }}, 2000);
+
+// Web Storage API
+// localStorage.setItem("userName", "Abdulla Al Masud");
+// localStorage.setItem("password", "0123456789");
+
+// localStorage.setItem("userName", "Riktanur Akter");
+// localStorage.setItem("password", "987654321");
+
+// const userName = localStorage.getItem("userName");
+// const passwordName = localStorage.getItem("password");
+// console.log(userName, passwordName);
+
+// localStorage.removeItem("userName");
+// localStorage.removeItem("password");
+
+// setItem(key, value)
+// const countries = ["Bangladesh", "Singapur", "Canada", "Argentina"];
+// localStorage.setItem("countries", JSON.stringify(countries));
+
+// // getItem(key)
+// const cntry = JSON.parse(localStorage.getItem("countries"));
+// console.log(cntry);
+
+// const makeRequest = async (config) => {
+//   return await axios(config);
+// }
+
+// const getData = () => {
+//   makeRequest({
+//     url : "https://jsonplaceholder.typicode.com/posts/1",
+//     method : "delete",
+//     data : JSON.stringify({
+//       title: 'fooaaaaaaaaaa',
+//       body: 'bar',
+//       userId: 1,
+//   })
+ 
+// })
+// .then((res) => console.log(res.data))
+// .catch((err) => console.log(err));
+// }
+
+// getData();
+
+
+// Calling api using ajax jquery:
+
+// const makeRequest = async (url, method, data) => {
+//   try{
+//     const results = await $.ajax({
+//       url : url,
+//       method : method,
+//       data : data
+//     })
+//     return results;
+//   } catch (err) {console.log(err);}
+// }
+// const getData = () => {
+//   makeRequest("https://jsonplaceholder.typicode.com/posts/1", "PUT", {
+//     title: 'foomaaaaaaaa',
+//     body: 'bar',
+//     userId: 1,
+//   })
+//   .then((res) => console.log(res));
+// }
+
+// getData();
+
+
+
+// Calling api using axios method, use of ".then"
+// axios
+// .put("https://jsonplaceholder.typicode.com/posts/1", {
+  
+//   body: JSON.stringify({
+//     title: 'fooMaaaaaaa',
+//     body: 'barMaaaaaaa',
+//     userId: 1,
+//   }),
+// })
+// .then((res) => console.log(res.data))
+// .catch((err) => console.log(err));
+
+
+// Calling api using axios method, use of "async-await"
+
+// const makeRequest = async (config) => {
+//   return await axios(config);
+// };
+
+// const getData = () => {
+//   makeRequest({
+//     url : "https://jsonplaceholder.typicode.com/posts/1",
+//     method : "put",
+//     data: JSON.stringify({
+//       title: 'foomaaa',
+//       body: 'barmaaaa',
+//       userId: 1,
+//     }),
+//   })
+//   .then((res) => console.log(res.data))
+//   .catch((err) => console.log(err));
+// }
+
+// getData();
+
+// API calling using Fetch> then
+
+// fetch("https://jsonplaceholder.typicode.com/posts", {
+//     method: "POST",
+//     headers: {
+//         "Content-type": "application/json; charset=UTF-8",
+//       },
+//     body: JSON.stringify({
+//         title: "fooMAAAAAA",
+//         body: "bar",
+//         userId: 1,
+//       }),
+// })
+// .then((res)=> 
+// {
+//     if(!res.ok){
+//         const message = `${res.status} error!`
+//         throw new Error(message)        
+//     }
+//     return res.json();
+// })
+// .then((res)=> console.log(res))
+// .catch((err)=> console.log(err));
+
+// API calling using Fetch> async-await
+
+// const makeRequest = async (url, config) =>{
+// const res = await fetch(url, config);
+// if(!res.ok){
+//     const message = `Error ${res.status}`;
+//     throw new Error(message)
+// }
+// const data = await res.json();
+// return data;
+// }
+// const getData = () =>{
+//     makeRequest("https://jsonplaceholder.typicode.com/posts", {
+//         method: 'POST',
+//         body: JSON.stringify({
+//           title: 'foomaaaa',
+//           body: 'bar',
+//           userId: 1,
+//         }),
+//         headers: {
+//           'Content-type': 'application/json; charset=UTF-8',
+//         },
+//       })
+//     .then((res) =>{console.log(res)})
+//     .catch((err) =>{console.log(err)})
+// }
+// getData();
+
+// Calling api: open(), send(), onload(), onerror()// setRequestHeader(), GET, POST, PUT, PATCH, UPDATE, DELETE.
+
+// events: onload(), onerror()
+// property: response, responseText, responseType, 
+// function: open(), send(), setRequestHeader()
+
+
+// const getData = () =>{
+//     const xhr = new XMLHttpRequest;
+//     xhr.open("GET", "https://jsonplaceholder.typicode.com/posts");
+//     xhr.onload = () =>{
+//         let data = xhr.response;
+//         console.log(JSON.parse(data));
+//     }
+//     xhr.send();
+// }
+// getData();
+
+
+// const makeRequest = (methd, url, dta) =>{
+//     return new Promise((resolve, reject) =>{
+//         const xhr = new XMLHttpRequest;
+//     xhr.open(methd, url);
+//     xhr.setRequestHeader("content-type", "application/json");
+//     xhr.onload = () =>{
+//         let data = xhr.response;
+//         console.log(JSON.parse(data));
+//     }
+//     xhr.send(JSON.stringify(dta));
+//     })
+// }
+// const getData = () =>{
+//     makeRequest("GET", "https://jsonplaceholder.typicode.com/posts")
+//     .then((res) => {console.log(res)}) ;
+// }
+// getData();
+// const sendData = () =>{
+//     makeRequest("POST", "https://jsonplaceholder.typicode.com/posts", {
+//     title: 'foo',
+//     body: 'bar',
+//     userId: 1
+//     });
+// }
+// const updateData = () =>{
+//     makeRequest("PUT", "https://jsonplaceholder.typicode.com/posts/1", {
+//     title: 'fooMaaaa',
+//     body: 'barMaaa',
+//     userId: 1
+//     });
+// }
+// const updateSingleData = () =>{
+//     makeRequest("PATCH", "https://jsonplaceholder.typicode.com/posts/1", {
+//     title: 'masud',
+    
+//     });
+// }
+// const deleteData = () =>{
+//     makeRequest("DELETE", "https://jsonplaceholder.typicode.com/posts/1");
+// }
+// deleteData();
+
+// const taskOne = () =>{
+//     return new Promise((resolve, reject) =>{
+//         resolve("Task 1 is completed.");
+//     });
+// };
+// const taskTwo = () =>{
+//     return new Promise((resolve, reject) =>{
+//         resolve("Task 2 is completed.");
+//     });
+// };
+// const taskThree = () =>{
+//     return new Promise((resolve, reject) =>{
+//         reject("Task 3 is not completed.");
+//     });
+// };
+// const taskFour = () =>{
+//     return new Promise((resolve, reject) =>{
+//         resolve("Task 4 is completed.");
+//     });
+// };
+
+// // taskOne()
+// // .then((res) =>{console.log(res)})
+// // .then(taskTwo)
+// // .then((res) =>{console.log(res)})
+// // .then(taskThree)
+// // .then((res) =>{console.log(res)})
+// // .then(taskFour)
+// // .then((res) =>{console.log(res)})
+
+// // async function callAllTasks(){}
+// // const callAllTasks = async () =>{
+// //     const t1 = await taskOne();
+// //     console.log(t1);
+// //     const t2 = await taskTwo();
+// //     console.log(t2);
+// //     const t3 = await taskThree();
+// //     console.log(t3);
+// //     const t4 = await taskFour();
+// //     console.log(t4);
+// // }
+// // callAllTasks();
+
+// const callAllTasks = async () =>{
+//     try{
+//         const t1 = await taskOne();
+//     console.log(t1);
+//     const t2 = await taskTwo();
+//     console.log(t2);
+//     const t3 = await taskThree();
+//     console.log(t3);
+//     const t4 = await taskFour();
+//     console.log(t4);
+//     } catch(e){
+// console.log(e);
+//     }
+// }
+// callAllTasks();
+
+
+// // promise: how to create promise: promise = pending>resolve/rejected
+
+// const promise1 = new Promise((resolve, reject) =>{
+//     let completedPromise = true;
+//     if(completedPromise){
+//         resolve("Completed promise 1");
+//     } else{
+//         reject("Not completed promise 1");
+//     }
+// });
+// promise1.then((res) =>{
+//     console.log(res);
+// })
+// promise1.catch((err) =>{
+//     console.log(err);
+// });
+
+// const promise2 = new Promise((resolve, reject) =>{
+//     setTimeout(() => {
+//         resolve("Completed promise 2");
+//     }, 2000);
+// });
+
+// promise2.then((res) =>{
+//     console.log(res);
+// });
+
+// const promise3 = new Promise((resolve, reject) =>{
+//     setTimeout(() => {
+//         reject("Not completed promise 3");
+//     }, 1000);
+// });
+// promise3.catch((res) =>{
+//     console.log(res);
+// });
+
+
+// // callback and higher order function:
+
+// function square(x){
+//     console.log(`Square of ${x} = ${x * x}`);
+// }
+// square(5);
+// // OR
+// const y = square;
+// y(6);
+
+// function higherOrderFunction(num, callback){
+//     callback(num);
+// }
+// higherOrderFunction(7, square);
+
+
+// const taskOne = (callback) =>{
+//     console.log("Task 1");
+//     callback();
+// }
+
+// const taskTwo = (callback) =>{
+//     setTimeout(() => {
+//         console.log("Task 2, data is loading")
+//         callback();
+//     }, 1000);
+    
+// }
+
+// const taskThree = (callback) =>{
+//     console.log("Task 3");
+//     callback();
+// }
+
+// const taskFour = (callback) =>{
+//     console.log("Task 4");
+//     callback();
+// }
+
+// const taskFive = () =>{
+//     console.log("Task 5");
+// }
+
+// // taskOne(function f1(){
+// //     taskTwo(function f2(){
+// //         taskThree(function f3(){
+// //             taskFour(function f4(){
+// //                 taskFive();
+// //             });
+// //         });
+// //     });
+// // });
+// // OR,
+// taskOne(() =>{
+//     taskTwo(() =>{
+//         taskThree(() =>{
+//             taskFour(() =>{
+//                 taskFive();
+//             });
+//         });
+//     });
+// });
+
+// console.log("Hi...");
+// document.querySelector("button").addEventListener("click", () =>{
+//     console.log("Button is clicked!");
+// });
+// console.log("Bye...");
+
+
+
+
+// syncronous/Asyncronous
+// console.log("Task 1");
+// console.log("Task 2");
+// console.log("Task 3");
+// console.log("Task 4");
+// console.log("Task 5");
+
+// const taskOne = () =>{
+//     console.log("Task 1");
+// }
+
+// const taskTwo = () =>{
+//     setTimeout(() =>{
+//         console.log("Task 2, Data is loading");
+//     }, 1000);
+// }
+
+// const taskThree = () =>{
+//     console.log("Task 3");
+// }
+
+// const taskFour = () =>{
+//     console.log("Task 4");
+// }
+
+// const taskFive = () =>{
+//     console.log("Task 5");
+// }
+
+// taskOne();
+// taskTwo();
+// taskThree();
+// taskFour();
+// taskFive();
+
+// export { text as message }
+
+// export let text = "Welcome my module";
+
+// export function setText(txt){
+//     text = txt;
+// }
+
+// If we want then we can change text from export and import area:
+// export {text as message}
+// import {text as message}
+
+// import { text, setText } from "./myModule.js";
+// console.log(text);
+// setText("Good bye es6!");
+
+// console.log(text);
+
+
+// Class
+// class student {
+//     constructor(id, name){
+//         this.id = id;
+//         this.name = name;
+//     }
+// // Set
+// set studentName(name){
+//         this.name = name;
+//         }
+// // Get
+// get studentInfo(){
+//     return this.id + " " + this.name;
+// }
+// }
+
+// let s1 = new student(101, "masud");
+// console.log(s1);
+
+// s1.studentName = "rikta";
+// console.log(s1.name);
+// console.log(s1.studentInfo);
+
+// string startwith(): endsWith and includes: It will return true/false
+// const message = "Today is friday";
+// console.log(message.startsWith("Today"));
+// console.log(message.endsWith("friday"));
+// console.log(message.includes("friday"));
+
+// array find() and array findIndex() feature:
+
+// let numbers = [5, 11, 14, 7, 78];
+// const evenNumber = (value) =>{
+//     if(value%2===0)
+//         return value;
+// }
+
+// let firstEvenNumber = numbers.find(x => x%2===0);
+// let firstEvenNumber = numbers.find(evenNumber);
+// let firstEvenNumberIndex = numbers.findIndex(evenNumber);
+// console.log(firstEvenNumber);
+// console.log(firstEvenNumberIndex);
+
+// let students = [
+//     {
+//         id : 101,
+//         gpa : 3.58
+//     },
+//     {
+//         id : 102,
+//         gpa : 2.58
+//     },
+//     {
+//         id : 103,
+//         gpa : 1.58
+//     },
+//     {
+//         id : 104,
+//         gpa : 3.58
+//     },
+// ]
+// console.log(students.find(x => x.gpa > 3));
+
+
+// array distructure:
+
+// let numbers = [10, 20, 30, 40, 50]
+// let [num1, num2, num3, num4, num5] = numbers
+// let [num1, num2, ...z] = numbers
+// console.log(num1);
+// console.log(num2);
+// console.log(z);
+
+// object distructure:
+
+// const studentInfo = 
+// {
+//     id : 101,
+//     name : "masud",
+//     gpa : 3.58,
+// nasted object distruction
+//     language : {
+//         nativ : "bangla",
+//         beginer : "english",
+//     }
+// }
+// let {id, name, gpa, language} = studentInfo;
+// console.log("ID : " + id, "Name : " + name);
+
+// destructing function parameters:
+
+// const studentInfo = /*(students)*/ ({id, fullName}) => {
+// console.log(/*`${students.id}, ${students.fullName}`*/`${id}, ${fullName}`);
+// }
+
+// const students = {
+//     id : 101,
+//     fullName : "abdulla al masud"
+// }
+
+// studentInfo(students);
+
+
+
+// Traditional function vs arrow function:
+// var students = [
+//     {
+//         ID : 101,
+//         Name : "masud",
+//         GPA : 2.58
+//     },
+//     {
+//         ID : 102,
+//         Name : "rikta",
+//         GPA : 3.58
+//     },
+//     {
+//         ID : 103,
+//         Name : "sabiha",
+//         GPA : 4.58
+//     },
+//     {
+//         ID : 104,
+//         Name : "tahera",
+//         GPA : 2.89
+//     }
+// ];
+//     function studentsName1(){
+//     return students.filter(function(X){
+//         return X.GPA>3;
+//     }).map(function(Y){
+//         return Y.Name;
+//     });
+// }
+// const studentsName2 = () => students.filter((k) => k.GPA > 3).map((b) => b.Name);
+// console.log(studentsName1());
+// console.log(studentsName2());
+
+// Traditional function vs arrow function:
+
+// function display1(){
+//     console.log("I am display1");
+// }
+// display1();
+
+// const display2 = () => {
+//     console.log("I am display2")
+// }
+// display2();
+
+// const display2 = () => console.log("I am display2");
+// display2();
+
+// function message1(){
+//     return "I am message 1";
+// }
+// console.log(message1());
+// var message2 = () => "I am message 2";
+// console.log(message2());
+
+// function add1(num1, num2){
+//     return num1 + num2;
+// }
+// console.log(add1(10, 20));
+// // Arrow function:
+// let add2 = (num1, num2) => num1 + num2;
+// console.log(add2(30, 70));
+
+
+
+// forEach
+// var numbers = [2, 3, 4, 5, 6];
+// var squareNumbers = [];
+// numbers.forEach(function(x){
+//     squareNumbers.push(x*x);
+// })
+// console.log(squareNumbers);
+// Map:
+// var numbers = [1, 2, 3, 4, 5, 6, 7];
+// var squareNumbers = numbers.map(function(X){
+//     return X*X;
+// })
+// console.log(squareNumbers);
+// Filter:
+// var numbers = [20, 3, 6, 44, 22, 7, 9, 12, 14, 11, 66];
+// var filterNumbers = numbers.filter(function(X){
+//     return X<=20;
+// })
+// console.log(filterNumbers);
+
+
+
+// for of and for in
+
+// const names = ["s1", "s2", "s3"];
+// for(let x of names){
+// console.log(x);
+//     document.write(x);
+// }
+
+// let students = {
+//     Name: "Abdulla Al Masud",
+//     Roll: 100,
+//     CGPA: 4.00
+// }
+// for(let X in students){
+//     // console.log(X);
+//     // console.log(students[X]);
+//     console.log(`${X}:  ${students[X]}`);
+// }
+
+// var numbers = [10, 20, 30, 40];
+// for(let x = 0; x<numbers.length; x++){
+//     console.log(numbers[x]);
+
+// }
+
+// var numbers = [10, 20, 30, 40];
+// numbers.forEach(myFunction);
+// function myFunction(X){
+// console.log(X);
+// document.write(X);
+// }
+
+// Spread operator
+// let numbers1 = [1, 2, 3, 4, 5];
+// let numbers2 = [6, 7, 8];
+
+// let numbers = [...numbers1, ...numbers2];
+// console.log(numbers);
+
+// let p1 = {
+// Name : "Abdulla Al Masud",
+// Age : 30
+// }
+// let p2 = {
+//     Address : "Dhaka",
+//     Country : "Bangladesh"
+// }
+
+// let numbers = {...p1, ...p2}
+// console.log(numbers);
+
+
+// Default and Rest parameter:
+// function messageFunction(text = "Hi this is default text!"){
+//     console.log(`The value is: ${text} Its correct okay?`);
+// }
+// messageFunction();
+// messageFunction("I am masud");
+
+// function textMessage(x, y, ...z){
+//     console.log(`X = ${x}, Y = ${y}, Z = ${z}`);
+// }
+
+// textMessage(20, 30, 40, 50, 60);
+
+
+// var c = document.getElementById("myCanvas");
+// var ctx = c.getContext("2d");
+
+// ctx.fillStyle = "green";
+// ctx.fillRect(10,10,380,280);
+
+// var centerX = c.width / 2;
+// var centerY = c.height / 2;
+
+// ctx.beginPath();
+// ctx.arc(centerX,centerY,50,0,2*Math.PI, false);
+// ctx.fillStyle = "red";
+// ctx.fill();
+
+
+// document.querySelector("#visit-button").addEventListener("click", function(){
+//     var num = document.querySelector("#input-data").value;
+//     alert("Thanks for your confirmation!");
+//     try{
+// if(num < 5){
+//     throw "Number too low!";
+// }else if(num > 10){
+//     throw "Number too high!";
+// }else{
+//     throw "Number is correct, thanks!";
+// }
+//     }catch(err){
+//         console.log(err);
+//     }
+// });
+
+
+// alert("Hi everyone");
+// alert(x);
+// alert("By everyone");
+
+// try{
+//     alert("Hi everyone");
+//     alert(x);
+//     alert("By everyone");
+// }catch(error){
+// alert("Inside catch error");
+// console.log(error);
+// console.log(error.message);
+// console.log(error.name);
+
+// }finally{
+//     alert("By everyone");
+
+// }
+// document.querySelector("#check").addEventListener("click", function(){
+//     var num = document.querySelector("#input-id").value;
+//     console.log(num);
+
+//     try{
+
+//         if(num < 5){
+//             throw "Input is too low!";
+//         }else if(num > 10){
+//             throw "Input is too high!";
+//         }else{
+//             throw "Yes, Its correct, thanks!"
+//         }
+        
+//     }catch(err){
+//         console.log(err);
+//     }
+
+// })
+
+
+// var saveButton = document.querySelector(".save-btn");
+// var message = document.querySelector(".message");
+// saveButton.addEventListener("click", startClock);
+// function startClock(){
+//     let date = new Date();
+//     let hours = date.getHours();
+//     let minutes = date.getMinutes();
+//     let seconds = date.getSeconds();
+// minutes = formatTime(minutes);
+// seconds = formatTime(seconds);
+
+//     let time = hours + ":" + minutes + ":" + seconds;
+//     message.textContent = time;
+//     setInterval(startClock, 1000);
+// }
+
+// function formatTime(value){
+// if(value <10){
+// value = "0" + value;
+// }
+// return value;
+// }
+
+
+// setTimeout(() =>{
+//     document.write("Hello..");
+// }, 3000);
+
+// setTimeout(display, 3000);
+// function display(){
+//     document.write("Display Function");
+// }
+
+// var saveButton = document.querySelector(".save-btn");
+// var message = document.querySelector(".message");
+// saveButton.addEventListener("click", saveUser);
+// function saveUser(){
+//     message.textContent = "Data saved successfully.";
+//     setTimeout(() =>{
+//         message.textContent = "";
+//     }, 3000);
+// }
+// saveButton.addEventListener("click", displayCount);
+// function displayCount(){
+//     let count = 10;
+//     message.textContent = count;
+//     setInterval(() => {
+//     count = count - 1; 
+//     message.textContent = count;
+//     }, 1000);
+// }
+
+
+// function deleteSomething(){
+//     let value = confirm("Do you want to delete?");
+//     if(value){
+//         document.write("Item was deleted.");
+//     }else{
+//         document.write("Item not deleted!")
+//     }
+// }
+// deleteSomething();
+
+// function welcomeMessage(){
+
+//     var name = prompt("Enter your name: ");
+//     if(name==null||name==""){
+//         document.write("no name found");
+//     }else{
+//         document.write("Welcome - " + '"' + name + '"');
+//     }
+// }
+
+// welcomeMessage();
+
+
+
+// console.clear();
+// console.log(location.href);
+// console.log(location.protocol);
+// console.log(location.hostname);
+// console.log(location.port);
+// console.log(location.pathname);
+
+// var locationDiv = document.querySelector(".location-div");
+
+// var p1 = locationDiv.children[0];
+// p1.textContent = "Web location = " + location.href;
+
+// var p2 = locationDiv.children[1];
+// p2.textContent = "Web Protocol = " + location.protocol;
+
+// var p3 = locationDiv.children[2];
+// p3.textContent = "Web Host name = " + location.hostname;
+
+// var p4 = locationDiv.children[3];
+// p4.textContent = "Web Port = " + location.port;
+
+// var p5 = locationDiv.children[4];
+// p5.textContent = "Web Path name = " + location.pathname;
+
+// var visitButton = document.querySelector("#visit-button");
+// visitButton.addEventListener("click", function(){
+//     location.assign("https://www.dsebd.org");
+// });
+
+// const box = document.querySelector("div");
+// const para = document.querySelector("p");
+
+// para.addEventListener("dragstart", function(event){
+// event.dataTransfer.setData("Text", event.target.id);
+// });
+
+// box.addEventListener("dragover", function(event){
+//     event.preventDefault();
+// });
+
+// box.addEventListener("drop", function(event){
+// let data = event.dataTransfer.getData("Text");
+// box.appendChild(document.getElementById(data));
+// event.preventDefault();
+// });
+
+
+// var inpu = document.querySelector("input");
+// var parag = document.querySelector("p");
+// inpu.addEventListener("copy", function(e){
+//     parag.innerText = "You copied this text: " + '"' +e.target.value + '"';
+//     console.log("You have copied");
+// })
+// inpu.addEventListener("cut", function(){
+//     console.log("You have cut");
+// })
+// inpu.addEventListener("paste", function(){
+//     console.log("You have pasted");
+// })
+
+// var inputt = document.querySelector("input");
+// inputt.addEventListener("blur", function(event){
+//     console.log("Blur is happened");
+//     inputt.style.backgroundColor = "transparent";
+//     inputt.style.padding = "2px";
+//     inputt.style.border = "1px solid black";
+//     inputt.style.borderRadius = "1px";
+//     console.log("You typed = "  +event.target.value);
+// })
+
+// inputt.addEventListener("focus", function(){
+//     console.log("focus is happened");
+//     inputt.style.backgroundColor = "tomato";
+//     inputt.style.padding = "20px";
+//     inputt.style.borderRadius = "6px";
+//     inputt.style.border = "none";
+// })
+
+// var textera = document.querySelector("textarea");
+// textera.addEventListener("keydown", function(){
+//     console.log("Key down pressed");
+// })
+
+// textera.addEventListener("keyup", function(){
+//     console.log("Key up pressed");
+// })
+
+// textera.addEventListener("keypress", function(){
+//     console.log("Key press pressed");
+// })
+
+
+// const div = document.querySelector("div");
+// div.addEventListener("click", function(e){
+//     console.log("click is occured");
+
+
+//     console.log("Id Name is: " + e.target.id);
+//     console.log("Class Name is: " + e.target.className);
+//     console.log("Inner HTML is: " + e.target.innerHTML);
+//     console.log("Text Content is: " + e.target.textContent);
+
+// })
+
+// div.addEventListener("dblclick", function(){
+//     console.log("Double click is occured");})
+
+// div.addEventListener("mousedown", function(){
+//     console.log("Mouse down is occured");})
+
+// div.addEventListener("mouseup", function(){
+//     console.log("Mouse up is occured");})
+
+// div.addEventListener("mouseenter", function(){
+//     console.log("Mouse enter is occured");})
+    
+// div.addEventListener("mouseleave", function(){
+//     console.log("Mouse leave is occured");})
+
+// div.addEventListener("mouseover", function(){
+//     console.log("Mouse over is occured");})
+        
+// div.addEventListener("mousemove", function(){
+//     console.log("Mouse move is occured");})
+
+// const form = document.querySelector("form");
+// const name = form.querySelector("div #name");
+// const email= form.querySelector("div #email");
+// const password = form.querySelector("div #password");
+
+// form.addEventListener("submit", formHandeler);
+
+// function formHandeler(event){
+//     event.preventDefault();
+// const userInfo = {
+//     name: name.value,
+//     email: email.value,
+//     password: password.value,
+// };
+// console.log(userInfo);
+// name.value = "";
+// email.value = "";
+// password.value = "";
+// }
+
+
+// const programs = document.querySelectorAll("input[name=program]");
+// Array.from(programs).map((programs)=>{
+//     programs.addEventListener("change", programHandeler);
+// })
+// function programHandeler(event){
+//     if(event.target.checked){
+//         console.log(event.target.value);
+//     }
+// }
+
+// document.querySelector("#department");
+// department.addEventListener("change", handleDepartment);
+// function handleDepartment(event){
+// console.log(event.target.value);
+// }
+
+// var numberOfwon = 0;
+// var numberOflost = 0;
+
+// for(var i = 0; i <= 5; i++){
+//     var guessNumber = parseInt(prompt("Please enter a number between 1 to 5:"));
+
+//     var randomNumber = Math.floor(Math.random()*5) + 1;
+    
+//     if(guessNumber==randomNumber){
+//         console.log("You have won!");
+//         numberOfwon++;
+    
+//     } else {
+//         console.log("You have lost, correct random number is: " + randomNumber);
+//         numberOflost++;
+//     }
+// }
+
+// document.write("Total number of won is: " + numberOfwon + "<br>");
+// document.write("Total number of lost is: " + numberOflost);
+
+// var numberOfwon = 0;
+// var numberOflost = 0;
+
+// for(var i = 0; i <= 5; i++){
+//     var guessNumber = parseInt(prompt("Enter any number between 1 to 5: "));
+
+//     var randomNumber = Math.floor(Math.random() * 5) + 1;
+    
+//     if(guessNumber==randomNumber){
+//         console.log("You have won!");
+//         numberOfwon++;
+//     } else {
+//         console.log("You have lost, correct random number is: " + randomNumber);
+//         numberOflost++;
+//     }
+// }
+// document.write("Total number of won is: " + numberOfwon + "<br>");
+// document.write("Total number of lost is: " + numberOflost);
+
+
+// var count = 0;
+// document.querySelector("textarea").addEventListener("keypress", function(event){
+// var text = event.key;
+// count++;
+
+// document.querySelector("p").innerHTML = "You have pressed on " + count;
+
+// });
+
+
+
+// for(var i = 0; i < 3; i++){
+//    document.querySelectorAll(".myButton")[i].addEventListener("click", function(){
+//       var btn = this.innerHTML;
+//       playAudio(btn);
+//       playAnimation(btn);
+//       });
+// }
+
+
+
+// function playAudio(btn){
+//    switch(btn){
+//       case "a":
+//       var audio = new Audio("sound/1.mp3");
+//       audio.play();
+//       break;
+//       case "b":
+//       var audio = new Audio("sound/2.mp3");
+//       audio.play();
+//       break;
+//       case "c":
+//       var audio = new Audio("sound/3.mp3");
+//       audio.play();
+//       break;
+//    }
+// }
+
+
+// function playAnimation(btn){
+//    var myAnumation = document.querySelector("." + btn);
+// myAnumation.classList.add("animat");
+
+// setTimeout(function(){
+//    myAnumation.classList.remove("animat");
+
+// }, 300);
+
+// }
+
+
+
+// for(var i = 0; i < 3; i++){
+//    document.querySelectorAll(".myButton")[i].addEventListener("click", function(){
+//       var text = this.innerHTML;
+//       myAudio(text);
+//       playAnimation(text);
+
+//    });
+// }
+
+// function myAudio(text){
+// switch(text){
+//    case "a":
+//    var audio = new Audio("sound/1.mp3");
+//    audio.play();
+//    break;
+//    case "b":
+//    var audio = new Audio("sound/2.mp3");
+//    audio.play();
+//    break;
+//    case "c":
+//    var audio = new Audio("sound/3.mp3");
+//    audio.play();
+//    break;
+// }
+// }
+
+// function playAnimation(text){
+// var selectedButton = document.querySelector("." + text);
+// selectedButton.classList.add("anim");
+
+// setTimeout(function(){
+//    selectedButton.classList.remove("anim");
+
+// },300);
+// }
+
+
+// var len = document.querySelectorAll(".myButton").length;
+// for(var x = 0; x < len; x++){
+//    var selectorButton = document.querySelectorAll(".myButton")[x];
+//    selectorButton.addEventListener("click", function(){
+   
+//       var myHeading = document.querySelector("h1");
+//       var test = this.innerHTML;
+//       myHeading.innerHTML = "You have clicked on " + test;
+//    myHeading.classList.add("my-style");
+//    });
+// }
+
+// var len = document.querySelectorAll(".myButton").length;
+// for(var i=0; i<len; i++){
+//    var myButton = document.querySelectorAll(".myButton")[i];
+//    myButton.addEventListener("click", function(){
+//       var myHeading = document.querySelector("h1");
+//       var text = this.innerHTML;
+//       myHeading.innerHTML = "You have clicked on " + text;
+//       myHeading.classList.add("my-style");
+
+//    });
+// }
+
+// var myButton = document.querySelector("h1");
+// myButton.addEventListener("mouseover", function(){
+//    myButton.classList.add("my-style");
+// });
+
+
+// var myButton = document.querySelector("h1");
+// myButton.addEventListener("mouseout", function(){
+//    myButton.classList.remove("my-style");
+// });
+
+
+// function addStyle(){
+//     var myPara = document.querySelector("#paraId");
+//     myPara.classList.add("para-style");
+// }
+
+
+
+
+// function removeStyle(){
+//     var myPara = document.querySelector("#paraId");
+//     myPara.classList.remove("para-style");
+// }
+
+
+// function addStyle(){
+// var myVar = document.querySelector("#paraId");
+// myVar.classList.add("para-style");
+// }
+
+// function removeStyle(){
+//     var myVar = document.querySelector("#paraId");
+//     myVar.classList.remove("para-style");
+//     }
+
+//image slider
+
+
+// var photos = ["image/1.jpg", "image/2.jpg", "image/3.jpg", "image/4.jpg", "image/5.jpg"];
+// var myImage = document.querySelector("img");
+// var count = 0;
+
+// function next(){
+//     count++;
+//     if(count >= photos.length){
+//         count = 0;
+//         myImage.src = photos[count];
+//     }else{
+//         myImage.src = photos[count];
+//     }
+// }
+
+
+// function prev(){
+//     count--;
+//     if(count < 0){
+//         count = photos.length - 1;
+//         myImage.src = photos[count];
+//     }else{
+//         myImage.src = photos[count];
+//     }
+// }
+
+// var photos = ["image/1.jpg", "image/2.jpg", "image/3.jpg", "image/4.jpg", "image/5.jpg"];
+// var imgTag = document.querySelector("img");
+// var count = 0;
+
+// function next(){
+// count++;
+// if(count >= photos.length){
+// count = 0;
+// imgTag.src = photos[count];
+// }else{
+//     imgTag.src = photos[count];
+
+// }
+// }
+
+// function prev(){
+//     count--;
+//     if(count < 0){
+//     count = photos.length - 1;
+//     imgTag.src = photos[count];
+//     }else{
+//         imgTag.src = photos[count];
+    
+//     }
+//     }
+
+// var link = document.getElementsByTagName("a")[0];
+// link.innerHTML = "masud";
+// link.style.textDecoration = "none";
+// link.style.fontSize = "3rem";
+// link.style.backgroundColor = "green";
+// link.style.color = "white"
+// link.style.padding = "10px"
+// link.style.borderRadius = "6px"
+// link.style.boxShadow = "6px 10px black"
+
+// var heading1 = document.getElementsByTagName("h1")[0];
+// heading1.innerHTML = "Say Hi..";
+// heading1.style.color = "red"
+
+// var heading2 = document.getElementsByTagName("h1")[1];
+// heading2.innerHTML = "Say Goodbye.."
+// heading2.style.color = "Green"
+
+// function myPicture1(){
+//     document.querySelector("#myImage").src = "flower.jpg";
+// }
+
+// function myPicture2(){
+//     document.querySelector("#myImage").src = "sunflower.jpeg";
+// }
+
+// function myButton1(){
+//     alert("I am button one");
+// }
+
+// function myMessage2(){
+//     alert("I am button two");
+// }
+
+// function myText(){
+//     alert("I am some text only");
+// }
+// document.getElementById("head1").innerHTML = "Text changed to 'masud'";
+// document.getElementsByTagName("h2")[0].innerHTML = "Text changed to 'masud'";
+// document.getElementsByClassName("head3").innerHTML = "Text changed to 'masud'";
+
+//1) alert function in a button
+//2) alert function in a text
+//3) text change after click on a button
+//4) picture displaying after click on a button
+//Now I am going to start with manual notepad/ text file, lets start:
